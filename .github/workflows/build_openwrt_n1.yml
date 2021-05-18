@@ -12,6 +12,7 @@ on:
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
+  FEEDS_CONF: feeds.conf.default
   REPO_BRANCH: master
   DIY_SH: diy.sh
   TZ: Asia/Shanghai
@@ -76,6 +77,7 @@ jobs:
         
     - name: Update & Install Feeds
       run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
