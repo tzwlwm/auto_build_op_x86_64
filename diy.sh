@@ -19,15 +19,15 @@ sed -i "s/'UTC'/'CST-8'\n   set system.@system[-1].zonename='Asia\/Shanghai'/g" 
 echo "iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE" >> package/network/config/firewall/files/firewall.user
 
 # Add luci-app-ssr-plus
-#pushd package/lean
-#git clone --depth=1 https://github.com/fw876/helloworld
-#cat > helloworld/luci-app-ssr-plus/root/etc/ssrplus/black.list << EOF
-#services.googleapis.cn
-#googleapis.cn
-#heroku.com
-#githubusercontent.com 
-#EOF
-#popd
+pushd package/lean
+git clone --depth=1 https://github.com/fw876/helloworld
+cat > helloworld/luci-app-ssr-plus/root/etc/ssrplus/black.list << EOF
+services.googleapis.cn
+googleapis.cn
+heroku.com
+githubusercontent.com 
+EOF
+popd
 
 # Clone community packages to package/community
 mkdir package/community
@@ -37,35 +37,35 @@ pushd package/community
 #git clone  --depth=1 https://github.com/project-openwrt/luci-app-unblockneteasemusic.git 
 
 # Add ServerChan
-#git clone --depth=1 https://github.com/tty228/luci-app-serverchan
+git clone --depth=1 https://github.com/tty228/luci-app-serverchan
 
 # Add OpenClash
-#git clone --depth=1 https://github.com/vernesong/OpenClash
+git clone --depth=1 https://github.com/vernesong/OpenClash
 
 # Docker
-#git clone --depth=1 https://github.com/lisaac/luci-lib-docker
-#git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
+git clone --depth=1 https://github.com/lisaac/luci-lib-docker
+git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
 
 # Add luci-theme-argon
-#git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
-#rm -rf ../lean/luci-theme-argon
+git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
+rm -rf ../lean/luci-theme-argon
 
-#git clone --depth=1 https://github.com/kenzok8/openwrt-packages.git
-#rm -rf ./openwrt-packages/luci-app-ssr-plus
-#rm -rf ./openwrt-packages/luci-app-serverchan
-#rm -rf ./openwrt-packages/luci-app-openclash
-#rm -rf ./openwrt-packages/luci-app-jd-dailybonus
-#rm -rf ./openwrt-packages/luci-theme-argon_new
-#rm -rf ./openwrt-packages/naiveproxy
-#rm -rf ./openwrt-packages/tcping
+git clone --depth=1 https://github.com/kenzok8/openwrt-packages.git
+rm -rf ./openwrt-packages/luci-app-ssr-plus
+rm -rf ./openwrt-packages/luci-app-serverchan
+rm -rf ./openwrt-packages/luci-app-openclash
+rm -rf ./openwrt-packages/luci-app-jd-dailybonus
+rm -rf ./openwrt-packages/luci-theme-argon_new
+rm -rf ./openwrt-packages/naiveproxy
+rm -rf ./openwrt-packages/tcping
 
-#git clone --depth=1 https://github.com/kenzok8/small
-#rm -rf ./small/v2ray-plugin
-#rm -rf ./small/xray-core
-#rm -rf ./small/xray-plugin
-#rm -rf ./small/shadowsocks-rust
+git clone --depth=1 https://github.com/kenzok8/small
+rm -rf ./small/v2ray-plugin
+rm -rf ./small/xray-core
+rm -rf ./small/xray-plugin
+rm -rf ./small/shadowsocks-rust
 
-#popd
+popd
 
 # Mod zzz-default-settings
 sed -i "/commit luci/i\uci set luci.main.mediaurlbase='/luci-static/argon'" package/lean/default-settings/files/zzz-default-settings
