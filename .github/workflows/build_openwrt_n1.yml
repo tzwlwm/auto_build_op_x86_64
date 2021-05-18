@@ -35,9 +35,9 @@ jobs:
       matrix:
         include:
           - sub_version: mini
-            config_file: mini.config
+            config_file: n1.mini.config
           - sub_version: plus
-            config_file: plus.config
+            config_file: n1.plus.config
     env:
         SUB_VERSION: ${{ matrix.sub_version }} 
         CONFIG_FILE: ${{ matrix.config_file }} 
